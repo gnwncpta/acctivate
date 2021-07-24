@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acctivate</title>
+</head>
+<body>
+
+    <div class="add-modal hidden">
+        <h1>Add Account</h1>
+
+        <form>
+            <label for="account">Account</label>
+            <input type="text" placeholder="E.g Netflix Premium" id="account" required>
+
+            <label for="name">Name</label>
+            <input type="text" placeholder="E.g John Nefl" id="name" required >
+
+            <label for="total-days">Total Days</label>
+            <input type="number" placeholder="E.g 30" id="total-days" required>
+
+            <div class="buttons">
+                <button>Save</button>
+                <button>Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <main>
+        <header class="container">
+            <h1>Acctivate</h1>
+
+            <p class="made">Made for Account Management</p>
+        </header>
+
+        <section class="account container">
+
+            <div class="title">
+                <h3>Accounts</h3>
+
+                <button class="add">Add</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>No</td>
+                        <td>Account</td>
+                        <td>Name</td>
+                        <td>Status</td>
+                        <td>Active From</td>
+                        <td>Expired</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- <tr>
+                        <td>1</td>
+                        <td>Netflix Premium</td>
+                        <td>Gunawan Cipta</td>
+                        <td>Active</td>
+                        <td>Friday, 23 July 2021</td>
+                        <td>Saturday, 24 July 2021</td>
+                        <td><button class="delete" data-id="1">Delete</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>2</td>
+                        <td>Spotify Premium</td>
+                        <td>Alex Handerson</td>
+                        <td>Active</td>
+                        <td>Friday, 23 July 2021</td>
+                        <td>Saturday, 24 July 2021</td>
+                        <td><button class="delete" data-id="2">Delete</button></td>
+                    </tr> -->
+                </tbody>
+            </table>
+
+        </section>
+    </main>
+    <script src="./index.bundle.js"></script>
+</body>
+</html>

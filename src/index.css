@@ -1,0 +1,179 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+@keyframes modal-animation {
+    0% {
+        top: -70%;
+    }
+
+    100% {
+        top: 15%;
+    }
+}
+
+.add-modal {
+    width: 400px;
+
+    position: absolute;
+    top: 15%;
+    left: 40%;
+
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0px 4px 20px 0 rgba(0,0,0,.25);
+    animation: modal-animation .8s ease-in-out;
+}
+
+.add-modal h1 {
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.add-modal form {
+    margin-top: 30px;
+}
+
+.add-modal form input {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: 1px solid grey;
+    transition: .3s ease-in-out;
+}
+
+.add-modal form input:focus {
+    outline: none;
+    border: 1px solid #1275bc;
+}
+
+.add-modal form .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add-modal form button {
+    width: 100%;
+    margin: 0 10px;
+    margin-top: 40px;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+    padding: 6px 30px;
+    box-sizing: border-box;
+    background-color: #14CC1B;
+    border: 2px solid #12BC19;
+    border-radius: 5px;
+}
+
+.add-modal form button:last-child {
+    background-color: #bababa;
+    border: 2px solid #bababa;
+    transition: .2s ease-in-out;
+}
+
+.add-modal form button:last-child:hover {
+    background-color: #cc1414;
+    border: 2px solid #bc1212;
+}
+
+main  {
+    height: 100vh;
+}
+
+header {
+    padding: 30px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header p {
+    font-weight: 300;
+}
+
+section.account {
+    margin-top: 50px;
+}
+
+section.account .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section.account .title h3 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+section.account .title button {
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+    padding: 6px 30px;
+    box-sizing: border-box;
+    background-color: #14CC1B;
+    border: 2px solid #12BC19;
+    border-radius: 6px;
+}
+
+section.account table {
+    margin-top: 50px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+section.account table thead {
+    border-radius: 10px 10px 0 0;
+}
+
+section.account table thead tr td {
+    font-weight: 500;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    background-color: rgb(225, 225, 225)
+}
+
+section.account table thead tr td:first-child {
+    border-radius: 10px 0 0 0;
+}
+
+section.account table thead tr td:last-child {
+    border-radius: 0 10px 0 0;
+}
+
+section.account table tbody tr td {
+    padding: 10px 15px;
+    box-sizing: border-box;
+    background-color: rgb(249, 249, 249)
+}
+
+section.account table tbody tr td button {
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+    padding: 6px 15px;
+    box-sizing: border-box;
+    background-color: #cc1414;
+    border: 2px solid #bc1212;
+    border-radius: 6px;
+}
