@@ -150,6 +150,6 @@ saveButtonModal.addEventListener('click', (e) => {
 showData();
 
 // Testing localStorage
-localStorage.setItem(1, [ 'One', 'Two' ]);
-console.log(localStorage);
-localStorage.removeItem(1);
+// localStorage.setItem(1, [ 'One', 'Two' ]);
+// console.log(localStorage);
+// localStorage.removeItem(1);
