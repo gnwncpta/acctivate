@@ -20,10 +20,12 @@ const Data = {
     deleteData(id){
         data.forEach(item => {
             if(id == item.id){
-                console.log('Found! the data will be deleted.');
-                console.log(item);
+                data.splice(item.id - 1, 1);
+                console.log('Found! Deleted.');
             }
-        })
+        });
+        
+        console.log(data);
     }
 }
 

@@ -13,14 +13,14 @@
         <h1>Add Account</h1>
 
         <form>
-            <label for="account">Account</label>
+            <label for="account">Account Name</label>
             <input type="text" placeholder="E.g Netflix Premium" id="account" required>
 
-            <label for="name">Name</label>
+            <label for="name">Owner Name</label>
             <input type="text" placeholder="E.g John Nefl" id="name" required >
 
-            <label for="total-days">Total Days</label>
-            <input type="number" placeholder="E.g 30" id="total-days" required>
+            <label for="active-period">Active Period</label>
+            <input type="number" placeholder="E.g 30 / 60 / 90" id="active-period" required>
 
             <div class="buttons">
                 <button>Save</button>
@@ -53,7 +53,7 @@
         <section class="account container">
 
             <div class="title">
-                <h3>Accounts</h3>
+                <h3>Account List</h3>
 
                 <button class="add">Add</button>
             </div>
@@ -95,7 +95,9 @@
                 </tbody>
             </table>
 
-            <p class="empty-info">Belum ada Data ...</p>
+            <div class="empty-state">
+                <img src="no-data-shown.svg" class="empty-info">
+            </div>
 
         </section>
     </main>
