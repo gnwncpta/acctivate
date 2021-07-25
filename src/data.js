@@ -6,7 +6,7 @@ let data = [
     //     status: 'Active',
     //     activeFrom: 'Friday, 23 July 2021',
     //     expired: 'Saturday, 24 July 2021'
-    // }
+    // } -> the data format
 ];
 
 const Data = {
@@ -15,12 +15,13 @@ const Data = {
     },
     addData(item){
         data.push(item);
-        console.log(data)
+        console.log(data);
     },
     deleteData(id){
         data.forEach(item => {
             if(id == item.id){
                 console.log('Found! the data will be deleted.');
+                console.log(item);
             }
         })
     }
