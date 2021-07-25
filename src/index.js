@@ -70,11 +70,12 @@ saveButtonModal.addEventListener('click', (e) => {
     const yearFrom = dateBefore.slice(11, 15); // get the Year
 
     dt.setDate(dt.getDate() + parseInt(days)); // get the Future Date
+    
     const dateAfter = dt.toString();
-    const dayTo = dateAfter.slice(0, 3);
-    const monthTo = dateAfter.slice(4, 7);
-    const dateTo = dateAfter.slice(8, 10);
-    const yearTo = dateAfter.slice(11, 15);
+    const dayExp = dateAfter.slice(0, 3);
+    const monthExp = dateAfter.slice(4, 7);
+    const dateExp = dateAfter.slice(8, 10);
+    const yearExp = dateAfter.slice(11, 15);
     
     // Add Data
     Data.addData(
@@ -84,13 +85,11 @@ saveButtonModal.addEventListener('click', (e) => {
             name: nameOwner,
             status: 'Active',
             activeFrom: `${dayFrom}, ${dateFrom} ${monthFrom} ${yearFrom}`,
-            expired: `${dayTo}, ${dateTo} ${monthTo} ${yearTo}`
+            expired: `${dayExp}, ${dateExp} ${monthExp} ${yearExp}`
         }
     );
 
-    account.value = '';
-    name.value = '';
-    totalDays.value = '';
+    account.value = ''; name.value = ''; totalDays.value = '';
 
     formModal.classList.toggle('hidden');
     accList.innerHTML = 'Loading ...';
@@ -100,3 +99,8 @@ saveButtonModal.addEventListener('click', (e) => {
 })
 
 showData();
+
+// Testing localStorage
+localStorage.setItem(1, [ 'One', 'Two' ]);
+console.log(localStorage);
+localStorage.removeItem(1);
