@@ -7,6 +7,11 @@ const formModal = document.querySelector('.add-modal');
 const account = document.querySelector('.add-modal form #account');
 const name = document.querySelector('.add-modal form #name');
 const totalDays = document.querySelector('.add-modal form #active-period');
+const activeFrom = document.querySelector('.add-modal form #active-from');
+
+activeFrom.addEventListener('input', (e) => {
+    console.log(e.target.value);
+})
 
 // Modal Button Selection
 const saveButtonModal = document.querySelector('.add-modal form .buttons button:first-child');
@@ -62,9 +67,9 @@ function showData(reshow){
     });
 }
 
-function instantiateCurrent(){
+function instantiateCurrent(activeBefore){
     // Instantiate the Date
-    let dt = new Date();
+    let dt = new Date(activeBefore);
 
     const dateBefore = dt.toString();
     const dayFrom = dateBefore.slice(0, 3); // get the dayFrom
@@ -75,9 +80,9 @@ function instantiateCurrent(){
     return `${dayFrom}, ${dateFrom} ${monthFrom} ${yearFrom}`;
 }
 
-function instantiateExpired(days){
+function instantiateExpired(activeBefore, days){
     // Instantiate the Date
-    let dt = new Date();
+    let dt = new Date(activeBefore);
     dt.setDate(dt.getDate() + parseInt(days)); // get the Future Date
 
     const dateAfter = dt.toString();
@@ -103,7 +108,7 @@ document.body.addEventListener('click', (e) => {
         let id = e.target.dataset.id;
         Data.deleteData(id);
         showData(true);
-        
+
         num -= 1;
     }
 });
@@ -117,6 +122,7 @@ saveButtonModal.addEventListener('click', (e) => {
     const accountName = account.value;
     const nameOwner = name.value;
     const days = totalDays.value;
+    const activeBefore = activeFrom.value;
 
     
     // Add Data
@@ -127,12 +133,12 @@ saveButtonModal.addEventListener('click', (e) => {
             name: nameOwner,
             status: `Active`,
             activePeriod: days,
-            activeFrom: `${instantiateCurrent()}`,
-            expired: `${instantiateExpired(days)}`
+            activeFrom: `${instantiateCurrent(activeBefore)}`,
+            expired: `${instantiateExpired(activeBefore, days)}`
         }
     );
 
-    account.value = ''; name.value = ''; totalDays.value = '';
+    account.value = ''; name.value = ''; totalDays.value = ''; activeFrom.value = 'dd/mm/yyyy';
     emptyState.classList.add('hidden');
     formModal.classList.toggle('hidden');
     accList.innerHTML = 'Loading ...';
