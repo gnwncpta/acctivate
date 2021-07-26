@@ -63,19 +63,112 @@
     margin-top: 30px;
 }
 
+.add-modal form div.reset.disabled {
+    cursor: not-allowed;
+    opacity: .4;
+}
+
+.add-modal form div.reset.disabled:hover {
+    border: 1px solid rgb(234, 234, 234);
+    background-color: rgb(234, 234, 234);
+}
+
+/* Add Modal -> Account */
+.add-modal form .account {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.add-modal form .account .reset-account {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+
+    border: 1px solid rgb(234, 234, 234);
+    background-color: rgb(234, 234, 234);
+    transition: .1s ease-in-out;
+}
+
+.add-modal form .account .reset-account:hover {
+    border: 2px solid rgb(205, 111, 111);
+    background-color: rgb(250, 135, 135);
+}
+/* -> End of Account Name <- */
+
+
+/* Add Modal -> Owner Name */
+.add-modal form .owner-name {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.add-modal form .owner-name .reset-name {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+
+    border: 1px solid rgb(234, 234, 234);
+    background-color: rgb(234, 234, 234);
+    transition: .1s ease-in-out;
+}
+
+.add-modal form .owner-name .reset-name:hover {
+    border: 2px solid rgb(205, 111, 111);
+    background-color: rgb(250, 135, 135);
+}
+/* -> End of Owner Name <- */
+
+
+/* Add Modal -> Active Period */
+.add-modal form .active-period {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.add-modal form .active-period .reset-period {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+
+    border: 1px solid rgb(234, 234, 234);
+    background-color: rgb(234, 234, 234);
+    transition: .1s ease-in-out;
+}
+
+.add-modal form .active-period .reset-period:hover {
+    border: 2px solid rgb(205, 111, 111);
+    background-color: rgb(250, 135, 135);
+}
+/* -> End of Active Period <- */
+
 .add-modal form label {
     font-size: 14px;
     color: rgb(55, 55, 55);
 }
 
+/* Input Styling */
 .add-modal form input {
     width: 100%;
     display: block;
-    margin-bottom: 25px;
 
     padding: 10px;
     box-sizing: border-box;
-    border-radius: 3px;
+    border-radius: 3px 0px 0px 3px;
     border: 1px solid rgb(234, 234, 234);
     transition: .3s ease-in-out;
     background-color: rgb(234, 234, 234);
@@ -87,38 +180,46 @@
 
 .add-modal form input:focus {
     outline: none;
-    border: 1px solid #1275bc;
+    border: 1px solid #12BC19;
 }
+/* End of Input Styling */
 
+/* Buttons Styling */
 .add-modal form .buttons {
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(2, 1fr);
 }
 
-.add-modal form button {
-    width: 100%;
-    margin-top: 40px;
+.add-modal form .buttons button {
     cursor: pointer;
-    color: white;
+
+    width: 100%;
+    border-radius: 3px;
     font-size: 15px;
+    color: white;
+    
+    margin-top: 40px;
     padding: 6px 30px;
     box-sizing: border-box;
-    background-color: #14CC1B;
-    border: 2px solid #12BC19;
-    border-radius: 5px;
 }
 
-.add-modal form button:last-child {
+.add-modal form .buttons button.save {
+    background-color: #14CC1B;
+    border: 2px solid #12BC19;
+}
+
+.add-modal form .buttons button.cancel {
     background-color: #bababa;
     border: 2px solid #bababa;
     transition: .2s ease-in-out;
 }
 
-.add-modal form button:last-child:hover {
+.add-modal form .buttons button.cancel:hover {
     background-color: #cc1414;
     border: 2px solid #bc1212;
 }
+/* End of Button Styling */
 
 /* Tech Stack Design */
 @keyframes animation-tech {

@@ -9,9 +9,10 @@ const name = document.querySelector('.add-modal form #name');
 const totalDays = document.querySelector('.add-modal form #active-period');
 const activeFrom = document.querySelector('.add-modal form #active-from');
 
-activeFrom.addEventListener('input', (e) => {
-    console.log(e.target.value);
-})
+// Reset From Value
+const resetAccount = document.querySelector('.add-modal form .account .reset-account');
+const resetName = document.querySelector('.add-modal form .owner-name .reset-name');
+const resetPeriod = document.querySelector('.add-modal form .active-period .reset-period');
 
 // Modal Button Selection
 const saveButtonModal = document.querySelector('.add-modal form .buttons button:first-child');
@@ -30,6 +31,39 @@ const emptyState = document.querySelector('.empty-state');
 // Tech Stack Selection
 const techStackModal = document.querySelector('.tech-stack');
 const close = document.querySelector('.tech-stack .head .close');
+
+
+// Form Event
+
+account.addEventListener('input', (e) => {
+    if(e.target.value == ''){
+        resetAccount.classList.add('disabled');
+    } else {
+        resetAccount.classList.remove('disabled');
+    }
+});
+
+name.addEventListener('input', (e) => {
+    if(e.target.value == ''){
+        resetName.classList.add('disabled');
+    } else {
+        resetName.classList.remove('disabled');
+    }
+});
+
+totalDays.addEventListener('input', (e) => {
+    if(e.target.value == ''){
+        resetPeriod.classList.add('disabled');
+    } else {
+        resetPeriod.classList.remove('disabled');
+    }
+});
+
+// Reset -> Event
+resetAccount.addEventListener('click', () => account.value = '');
+resetName.addEventListener('click', () => name.value = '');
+resetPeriod.addEventListener('click', () => totalDays.value = '');
+
 
 stack.addEventListener('click', () => {
     techStackModal.classList.toggle('hidden');
@@ -51,16 +85,16 @@ function showData(reshow){
         return null;
     }
 
-    Data.showData().forEach(item => {
+    Data.showData().forEach((item, index) => {
         listDOM += `<tr>
-                        <td>${item.id}</td>
+                        <td>${index+1}</td>
                         <td>${item.account}</td>
                         <td>${item.name}</td>
                         <td>${item.status}</td>
                         <td>${item.activePeriod} ${item.activePeriod > 1 ? 'Days' : 'Day'}</td>
                         <td>${item.activeFrom}</td>
                         <td>${item.expired}</td>
-                        <td><button class="delete" data-id="${item.id}">Delete</button></td>
+                        <td><button class="delete" data-id="${index+1}">Delete</button></td>
                     </tr>`;
     
         accList.innerHTML = listDOM;
@@ -101,6 +135,10 @@ addButton.addEventListener('click', () => {
 cancelButtonModal.addEventListener('click', (e) => {
     e.preventDefault();
     formModal.classList.toggle('hidden');
+    account.value = '';
+    name.value = '';
+    totalDays.value = '';
+    activeFrom = 'dd/mm/yyyy';
 });
 
 document.body.addEventListener('click', (e) => {
@@ -129,10 +167,10 @@ saveButtonModal.addEventListener('click', (e) => {
     Data.addData(
         {   
             id: num,
-            account: accountName, 
-            name: nameOwner,
+            account: accountName.trim(), 
+            name: nameOwner.trim(),
             status: `Active`,
-            activePeriod: days,
+            activePeriod: days.trim(),
             activeFrom: `${instantiateCurrent(activeBefore)}`,
             expired: `${instantiateExpired(activeBefore, days)}`
         }

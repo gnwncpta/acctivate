@@ -9,28 +9,46 @@
 </head>
 <body>
 
-    <div class="add-modal hidden">
+    <section class="add-modal hidden">
         <h1>Add Account</h1>
 
         <form>
+
             <label for="account">Account Name</label>
-            <input type="text" placeholder="E.g Netflix Premium" id="account" required>
+            <div class="account">
+                <input type="text" placeholder="E.g Netflix Premium" id="account" required>
+                <div class="reset reset-account disabled">
+                    <img src="https://image.flaticon.com/icons/png/512/1828/1828778.png" width="11px">
+                </div>
+            </div>
 
             <label for="name">Owner Name</label>
-            <input type="text" placeholder="E.g Jason" id="name" required >
+            <div class="owner-name">
+                <input type="text" placeholder="E.g Jason" id="name" required >
+                <div class="reset reset-name disabled">
+                    <img src="https://image.flaticon.com/icons/png/512/1828/1828778.png" width="11px">
+                </div>
+            </div>
 
             <label for="active-period">Active Period</label>
-            <input type="number" placeholder="E.g 30 / 60 / 90" id="active-period" required>
+            <div class="active-period">
+                <input type="text" placeholder="E.g 30 / 60 / 90" id="active-period" required>
+                <div class="reset reset-period disabled">
+                    <img src="https://image.flaticon.com/icons/png/512/1828/1828778.png" width="11px">
+                </div>
+            </div>
 
             <label for="active-from">Active From</label>
             <input type="date" id="active-from">
 
             <div class="buttons">
-                <button>Save</button>
-                <button>Cancel</button>
+                <button class="save">Save</button>
+                <button class="cancel">Cancel</button>
             </div>
+
         </form>
-    </div>
+
+    </section>
 
     <div class="tech-stack hidden">
         <div class="head">
