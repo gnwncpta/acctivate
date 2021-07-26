@@ -20,5 +20,6 @@ module.exports = {
     },
     plugins: [
         new BrowserSyncPlugin(browserSyncOptions)
-    ]
+    ],
+    target: 'node'
 }
