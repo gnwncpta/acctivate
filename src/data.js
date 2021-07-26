@@ -16,6 +16,7 @@ const Data = {
     addData(item){
         data.push(item);
         console.log(data);
+        return "Success Add Data!";
     },
     deleteData(id){
         data.forEach(item => {

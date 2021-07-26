@@ -329,7 +329,7 @@ section.account .title button {
     box-sizing: border-box;
     background-color: #14CC1B;
     border: 2px solid #12BC19;
-    border-radius: 6px;
+    border-radius: 3px;
 }
 
 section.account table {

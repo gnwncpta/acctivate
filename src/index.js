@@ -1,9 +1,19 @@
 import './index.css';
 import Data from './data';
+import Collection from './Collections';
 import makeResetDisabled from './disabled';
 import emptyFields from './emptyContents';
 import instantiateCurrent from './Date/instantiateCurrent';
 import instantiateExpired from './Date/instantiateExpired';
+
+// Instantiate localStorage to zero length of Array
+localStorage.Collections = []
+
+// Masalah yang harus dihadapi sekarang adalah
+// Memasukkan data JSON ke dalam localStorage.Collections
+// localStorage.Collections ini harus bertipe data Array agar nanti bisa di looping
+// lalu memasukkan data JSON ke dalam localStorage.Collections array
+
 const data = {
     num: 0
 }
@@ -37,7 +47,6 @@ const emptyState = document.querySelector('.empty-state');
 // Tech Stack Selection
 const techStackModal = document.querySelector('.tech-stack');
 const close = document.querySelector('.tech-stack .head .close');
-
 
 // Form -> Event
 account.addEventListener('input', (e) => {
@@ -104,7 +113,7 @@ close.addEventListener('click', (e) => {
     e.target.parentElement.parentElement.classList.toggle('hidden');
 });
 
-function showData(reshow){
+function showData(data, reshow){
     let listDOM = '';
 
     if(Data.showData().length === 0){
@@ -115,6 +124,8 @@ function showData(reshow){
         }
         return null;
     }
+
+    console.log(data)
 
     Data.showData().forEach((item, index) => {
         listDOM += `<tr>
@@ -165,19 +176,22 @@ saveButtonModal.addEventListener('click', (e) => {
     const days = totalDays.value;
     const activeBefore = activeFrom.value;
 
+    let item = {   
+        id: data.num,
+        account: accountName.trim(), 
+        name: nameOwner.trim(),
+        status: `Active`,
+        activePeriod: days.trim(),
+        activeFrom: `${instantiateCurrent(activeBefore)}`,
+        expired: `${instantiateExpired(activeBefore, days)}`
+    }
     
     // Add Data
-    Data.addData(
-        {   
-            id: data.num,
-            account: accountName.trim(), 
-            name: nameOwner.trim(),
-            status: `Active`,
-            activePeriod: days.trim(),
-            activeFrom: `${instantiateCurrent(activeBefore)}`,
-            expired: `${instantiateExpired(activeBefore, days)}`
-        }
-    );
+    console.log(Data.addData(item));
+    localStorage.setItem('dataSaved', true);
+
+    let jsonify = JSON.stringify(item);
+    console.log(Collection.addCollections(jsonify));
 
     emptyFields();
     makeResetDisabled();
@@ -191,9 +205,8 @@ saveButtonModal.addEventListener('click', (e) => {
     }, 500);
 })
 
-showData();
-
-// Testing localStorage
-// localStorage.setItem(1, [ 'One', 'Two' ]);
-// console.log(localStorage);
-// localStorage.removeItem(1);
+if(localStorage.getItem('dataSaved') === 'true'){   
+    console.log('Found Data on localStorage!');
+    console.log(Collection);
+    showData(localStorage.getItem(data.num), false);
+}
