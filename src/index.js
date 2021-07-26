@@ -207,6 +207,6 @@ saveButtonModal.addEventListener('click', (e) => {
 
 if(localStorage.getItem('dataSaved') === 'true'){   
     console.log('Found Data on localStorage!');
-    console.log(Collection);
+    
     showData(localStorage.getItem(data.num), false);
 }
