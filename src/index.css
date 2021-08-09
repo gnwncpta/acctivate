@@ -1,3 +1,8 @@
+:root {
+    --dark-bg: #111;
+    --light-text: white;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -182,6 +187,10 @@
     outline: none;
     border: 1px solid #12BC19;
 }
+
+.add-modal form #active-from {
+    cursor: pointer;
+}
 /* End of Input Styling */
 
 /* Buttons Styling */
@@ -207,6 +216,10 @@
 .add-modal form .buttons button.save {
     background-color: #14CC1B;
     border: 2px solid #12BC19;
+}
+
+.add-modal form .buttons button.save:hover {
+    background-color: #12BC19;
 }
 
 .add-modal form .buttons button.cancel {
@@ -282,6 +295,12 @@
 
 main  {
     height: 100vh;
+    transition: .3s ease-in-out;
+}
+
+main.dark {
+    color: white;
+    background-color: var(--dark-bg);
 }
 
 header {
@@ -290,6 +309,42 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+
+header .toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    width: 50px;
+    height: 24px;
+    padding: 6px 4px;
+    border-radius: 50px;
+    box-sizing: border-box;
+
+    background-color: rgb(213, 213, 213);
+    transition: .5s ease-in-out;
+}
+
+header .toggle.dark {
+    justify-content: flex-end;
+    background-color: rgb(9, 3, 181);
+}
+
+header .toggle:active {
+    justify-content: flex-end;
+}
+
+header .toggle .round {
+    width: 19px;
+    height: 18px;
+    background-color: rgb(13, 213, 13);
+    border-radius: 50px;
+}
+
+header .toggle .round.dark {
+    background-color: white;
 }
 
 header a {
@@ -304,6 +359,15 @@ header a {
 header a:hover {
     color: white;
     background-color: #111;
+}
+
+header a.dark {
+    color: white;
+}
+
+header a.dark:hover {
+    color: #111;
+    background-color: white;
 }
 
 section.account {
@@ -325,11 +389,16 @@ section.account .title button {
     cursor: pointer;
     color: white;
     font-size: 15px;
-    padding: 6px 30px;
+    padding: 6px 20px;
     box-sizing: border-box;
     background-color: #14CC1B;
     border: 2px solid #12BC19;
     border-radius: 3px;
+    transition: .1s ease-in-out;
+}
+
+section.account .title button:hover {
+    transform: translateY(5px);
 }
 
 section.account table {
@@ -343,11 +412,17 @@ section.account table thead {
 }
 
 section.account table thead tr td {
-    font-weight: 400;
-    font-size: 13px;
+    font-weight: 500;
+    font-size: 14px;
     padding: 10px 15px;
     box-sizing: border-box;
-    background-color: rgb(231, 231, 231)
+    background-color: rgb(231, 231, 231);
+    transition: .3s ease-in-out;
+}
+
+section.account table thead tr td.dark {
+    color: white;
+    background-color: rgb(30, 30, 30);
 }
 
 section.account table thead tr td:first-child {
@@ -358,10 +433,12 @@ section.account table thead tr td:last-child {
     border-radius: 0 10px 0 0;
 }
 
+/* Body Row Styling */
 section.account table tbody tr td {
     padding: 10px 15px;
+    font-size: 14px;
     box-sizing: border-box;
-    background-color: rgb(249, 249, 249)
+    background-color: transparent;
 }
 
 section.account table tbody tr td button {
@@ -372,5 +449,9 @@ section.account table tbody tr td button {
     box-sizing: border-box;
     background-color: #cc1414;
     border: 2px solid #bc1212;
-    border-radius: 6px;
+    border-radius: 3px;
+}
+
+section.account table tbody tr td button:hover {
+    background-color: #bc1212;
 }

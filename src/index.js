@@ -12,11 +12,18 @@ localStorage.Collections = []
 // Masalah yang harus dihadapi sekarang adalah
 // Memasukkan data JSON ke dalam localStorage.Collections
 // localStorage.Collections ini harus bertipe data Array agar nanti bisa di looping
-// lalu memasukkan data JSON ke dalam localStorage.Collections array
+// lalu memasukkan data object ke dalam localStorage.Collections array
 
 const data = {
-    num: 0
+    num: 0,
+    dark: false
 }
+
+// Toggle Dark Mode
+const toggleBtn = document.querySelector('header .toggle');
+const round = document.querySelector('header .toggle .round');
+const mainBg = document.querySelector('main');
+const tableHead = document.querySelectorAll('section.account table thead tr td');
 
 // Form Selection
 const formModal = document.querySelector('.add-modal');
@@ -104,6 +111,35 @@ resetPeriodBtn.addEventListener('click', (e) => {
     totalDays.value = '';
 });
 
+const everythingDark = () => {
+
+    // Button Toggle Dark
+    toggleBtn.classList.toggle('dark');
+    round.classList.toggle('dark');
+
+    // Main BG
+    mainBg.classList.toggle('dark');
+
+    // Table head to Dark
+    tableHead.forEach(td => td.classList.toggle('dark'));
+
+    // Stack button to Dark
+    stack.classList.toggle('dark');
+}
+
+// Toggle Dark Mode
+
+toggleBtn.addEventListener('click', () => {
+    everythingDark();
+
+    // Save to localStorage
+    if(localStorage.darkMode === 'true'){
+        localStorage.setItem('darkMode', false);
+    } else if(localStorage.darkMode === 'false'){
+        localStorage.setItem('darkMode', true);
+    }
+
+});
 
 stack.addEventListener('click', () => {
     techStackModal.classList.toggle('hidden');
@@ -113,7 +149,7 @@ close.addEventListener('click', (e) => {
     e.target.parentElement.parentElement.classList.toggle('hidden');
 });
 
-function showData(data, reshow){
+function showData(reshow){
     let listDOM = '';
 
     if(Data.showData().length === 0){
@@ -125,9 +161,8 @@ function showData(data, reshow){
         return null;
     }
 
-    console.log(data)
-
     Data.showData().forEach((item, index) => {
+
         listDOM += `<tr>
                         <td>${index+1}</td>
                         <td>${item.account}</td>
@@ -180,7 +215,7 @@ saveButtonModal.addEventListener('click', (e) => {
         id: data.num,
         account: accountName.trim(), 
         name: nameOwner.trim(),
-        status: `Active`,
+        status: `${instantiateCurrent(activeBefore) != instantiateExpired(activeBefore, days) ? "Active" : "Not Active"}`,
         activePeriod: days.trim(),
         activeFrom: `${instantiateCurrent(activeBefore)}`,
         expired: `${instantiateExpired(activeBefore, days)}`
@@ -207,6 +242,8 @@ saveButtonModal.addEventListener('click', (e) => {
 
 if(localStorage.getItem('dataSaved') === 'true'){   
     console.log('Found Data on localStorage!');
-    
-    showData(localStorage.getItem(data.num), false);
+}
+
+if(localStorage.getItem('darkMode') === 'true'){
+    everythingDark();
 }
